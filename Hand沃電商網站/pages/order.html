@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order</title>
+    <link rel="stylesheet" href="../assets/css/order.css">
+    <script>
+        function ADD() {
+            var num = parseInt(document.getElementById('amount').innerText);
+            var price = parseInt(document.getElementById('price').innerText);
+            num++;
+            var total = num * price;
+            document.getElementById('amount').innerText = num.toString();
+            document.getElementById('total').innerText = total.toString();
+            ProductNumberChange();
+        }
+
+        function DE() {
+            var num = parseInt(document.getElementById('amount').innerText);
+            var price = parseInt(document.getElementById('price').innerText);
+            if (num > 1) {
+                num--;
+                document.getElementById('amount').innerText = num.toString();
+                var total = num * price;
+                document.getElementById('total').innerText = total.toString();
+                ProductNumberChange();
+            } else {
+                Delete(row)
+            }
+        }
+
+        function finish(){
+            alert("訂單建立成功");
+        }
+
+        function Delete(row){
+    alert("確定刪除此巷商品");
+    var tr=row.parentNode.parentNode;
+    tr.parentNode.removeChild(tr);
+        }
+    </script>
+</head>
+
+<body>
+    <!--title-->
+    <div class="display">
+        <div class="title_display">
+            <p class="title"> order processing</p>
+        </div>
+
+        <!--訂單資訊-->
+        <div class="order_information">
+            <table>
+                <tr>
+                    <th colspan="6">商品資訊</th>
+                </tr>
+                <tr>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td colspan="2">商品名稱</td>
+                    <td>單價</td>
+                    <td>數量</td>
+                    <td>總價</td>
+                </tr>
+                <tr>
+                    <td> <button onclick="Delete(this)">刪除商品</button></td>
+                    <td>
+                        <div id="cart_photo" class="cart_photo"
+                            style="background-image:url(../assets/images/lamy/lamy.jpg)"></div>
+                    </td>
+                    <td>
+                        <p style="float: left;">德國 Lamy Safari 狩獵系列 2021限定色 叢林系列鋼筆</p>
+                    </td>
+                    <td id="price">750</td>
+                    <td>
+                        <!--此處根據加減修改金額-->
+                        <button onclick="DE()">-</button>
+                        <span id="amount" class="amount">1</span>
+                        <button onclick="ADD()">+</button>
+                    </td>
+                    <td id="total">
+                        <script>
+                            var price = parseInt(document.getElementById('price').innerText);
+                            document.getElementById('total').innerText = price.toString();
+                        </script>
+                    </td>
+                </tr>
+
+                <!--運送資訊-->
+                <tr>
+                    <th colspan="6">貨運資訊</th>
+                </tr>
+                <tr>
+                    <td colspan="4">貨運方式:</td>
+                    <td colspan="2">運費</td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <form action="">
+                            <input type="radio" id="delivery1" name="delivery" value="45">
+                            <label for="711">7-Eleven</label><br>
+                            <input type="radio" id="delivery2" name="delivery" value="60">
+                            <label for="FM">FamilyMart</label><br>
+                            <input type="radio" id="delivery3" name="delivery" value="100">
+                            <label for="mail">郵寄</label>
+                        </form>
+
+                    </td>
+                    <td id="deliverycost" colspan="2"></td>
+                    <script>
+                        var pathTypeArr = document.getElementsByName("delivery");
+                        pathTypeArr[0].onclick = function () {
+                            var checkValue = parseInt(pathTypeArr[0].value);
+                            var product_cost = parseInt(document.getElementById('total').innerText);
+                            document.getElementById('deliverycost').innerText = checkValue.toString();
+                            var allcount = product_cost + checkValue;
+                            document.getElementById('allcount').innerText = allcount.toString();
+                        };
+                        pathTypeArr[1].onclick = function () {
+                            var checkValue = parseInt(pathTypeArr[1].value);
+                            var product_cost = parseInt(document.getElementById('total').innerText);
+                            document.getElementById('deliverycost').innerText = checkValue.toString();
+                            var allcount = product_cost + checkValue;
+                            document.getElementById('allcount').innerText = allcount.toString();
+                        };
+                        pathTypeArr[2].onclick = function () {
+                            var checkValue = parseInt(pathTypeArr[2].value);
+                            var product_cost = parseInt(document.getElementById('total').innerText);
+                            document.getElementById('deliverycost').innerText = checkValue.toString();
+                            var allcount = product_cost + checkValue;
+                            document.getElementById('allcount').innerText = allcount.toString();
+                        };
+                    </script>
+                </tr>
+                <tr>
+                    <td colspan="6" style="text-align: right;">
+                        總額</br>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6" style="text-align: right; font-size: 30px;" id="allcount">
+                        <script>
+                        </script>
+                    </td>
+                </tr>
+            </table>
+
+            <div>
+                <form action="">
+                    <table>
+                        <tr>
+                            <th colspan="6"> 收件人資訊</th>
+                        </tr>
+                    </table>
+                    <div class="delivery_information">
+                        姓 名 ： <input type="text" name="t1" size="20" style="font-size:16px"><br>
+                        <p></p>
+                        住 址 ： <input type="text" name="t2" size="50" style="font-size:16px"><br>
+                        <p></p>
+                        電 話 ： <input type="tel" name="tel" size="30" style="font-size:16px"><br>
+                        <p></p>
+                        E-Mail ： <input type="email" size="30" title="username@mailserver" style="font-size:16px"><br>
+                        <p></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div style="display:flex;  justify-content:space-evenly;">
+            <a href="../pages/member.html"><button class="">回上頁</button></a>
+            <a href="index.html"><button class="bt1" onclick="finish()">送出</button></a>
+          </div>
+    </div>
+</body>
+
+</html>

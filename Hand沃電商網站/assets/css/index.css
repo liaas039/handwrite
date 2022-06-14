@@ -1,0 +1,99 @@
+
+.ad{
+      
+      width: 70%;
+      margin:0px auto;
+}
+
+.carousel-item img{
+      height:500px;
+      
+}
+/*文案*/
+main {
+    width: 100%; 
+    height: 229px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+ .main span {
+    display: inline-block;
+
+    width: 21ch;
+    font: bold 200% Consolas, Monaco, monospace;  
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: 500;
+    border-right: 1px solid transparent;
+
+    animation: typing 3s steps(21), caret .5s steps(1) infinite;
+  }
+
+  @keyframes typing{
+    from {
+        width: 0;
+    }
+  }
+  @keyframes caret{
+    50% { border-right-color: red}
+  }
+/*排行榜*/
+.top-5 {
+                  float: left;
+                  width: 340px;
+
+                  
+
+                  margin-top: 106px;
+                  margin-left: 118px;
+                  background: #fff;
+                  border: 1px solid #FFF;
+                  box-shadow: #d0d0d0 1px 1px 10px 0px;
+            }
+
+            .top-5 ul {
+                  counter-reset: section;
+            }
+
+            .top-5 li {
+                  float: left;
+                  width: 260px;
+                  border-bottom: 1px solid #b8c2cc;
+                  line-height: 46px;
+                  height: 46px;
+                  overflow: hidden;
+                  color: #525C66;
+                  font-size: 14px;
+
+            }
+
+            .top-5 li:before {
+                  counter-increment: section;
+                  content: counter(section);
+                  display: inline-block;
+                  padding: 0 12px;
+                  margin-right: 10px;
+                  height: 18px;
+                  line-height: 18px;
+                  background: #b8c2cc;
+                  color: #fff;
+                  border-radius: 3px;
+                  font-size: 9px
+            }
+        
+            .top-5 li:nth-child(1):before {
+                  background: #FF0000
+            }
+
+            .top-5 li:nth-child(2):before {
+                  background: #FF0000
+            }
+
+            .top-5 li:nth-child(3):before {
+                  background: #FF0000
+            }
+.top-5 h1{
+      text-align: center;
+      
+}
