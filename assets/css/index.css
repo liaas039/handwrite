@@ -40,7 +40,7 @@ main {
   }
 /*排行榜*/
 .top-5 {
-                  float: left;
+                   float: left;
                   width: 340px;
 
                   
@@ -96,4 +96,15 @@ main {
 .top-5 h1{
       text-align: center;
       
+}
+/*品牌*/
+.brand{
+
+       float: right;
+}
+.brand img{
+      width:400px;
+}
+.down{
+      display: inline-block; 
 }
